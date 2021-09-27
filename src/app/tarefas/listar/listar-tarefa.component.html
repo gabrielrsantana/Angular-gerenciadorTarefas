@@ -11,8 +11,14 @@
                 </a>
             </th>
         </tr>
-        <tr>
-            <td></td>
+        <!-- exibição das tarefas,comeca no <tr> e executa todos os comandos do table row que tem a tag do angular-->
+        <tr *ngFor="let tarefa of tarefas">
+            <!-- dara biding atribuindo class bootstrap success-->
+            <!-- adiciona verde quando for concluida -->
+            <td [class.success]="tarefa.concluida">
+                <!-- data binding de interpolacao para imprimir na tela algo -->
+                {{ tarefa.nome}}
+            </td>
             <td style="width: 70px" class="text-center">
                 <input type="checkbox">
             </td>
