@@ -14,7 +14,6 @@
         </tr>
         <!-- exibição das tarefas,comeca no <tr> e executa todos os comandos do table row que tem a tag do angular-->
         <tr *ngFor="let tarefa of tarefas">
-            
             <td [class.success]="tarefa.concluida">
                 {{ tarefa.nome}}
             </td>

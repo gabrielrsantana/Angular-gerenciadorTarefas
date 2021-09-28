@@ -77,6 +77,7 @@ export class TarefaService {
     tarefas.forEach((obj,index,objs)=>{
       if(id === obj.id){
         objs[index].concluida = !obj.concluida; //altera true/false
+        console.log("entrou em alterarstatus(tarefa)")
       }
     });
   }//alterar
