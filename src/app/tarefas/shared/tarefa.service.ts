@@ -72,14 +72,14 @@ export class TarefaService {
    * @param id 
    * @return void
    */
-  alterarStatus(id:number):void{
-    const tarefas :Tarefa[] = this.listarTodos();
+   alterarStatus(id: number):void {
+    const tarefas : Tarefa[] = this.listarTodos();
     tarefas.forEach((obj,index,objs)=>{
-      if(id === obj.id){
-        objs[index].concluida = !obj.concluida; //altera true/false
-        console.log("entrou em alterarstatus(tarefa)")
+      if (id === obj.id){
+        objs[index].concluida = !obj.concluida;
       }
     });
-  }//alterar
+    localStorage['tarefas'] = JSON.stringify(tarefas);
+  }
 
 }//export class
