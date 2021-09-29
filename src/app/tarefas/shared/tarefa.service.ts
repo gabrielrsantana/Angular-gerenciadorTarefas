@@ -55,7 +55,6 @@ export class TarefaService {
     //localstorage recebe so string,então converte
     localStorage['tarefas'] = JSON.stringify(tarefas);
   }//atualiza
-
   /**
    * Filtra as tarefas diferentes do parametro id ,e armazena em tarefas
    * @param id da tarefa
