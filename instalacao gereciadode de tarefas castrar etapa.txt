@@ -1,0 +1,135 @@
+gerenciador de tarefas
+
+cadastrar:
+-crie componente:
+prompt> ng g component tarefas/cadastrar-tarefa
+-renomear pasta criada para cadastrar
+
+-criar o index.ts dentro do cadastrar ( metodo barrels)
+e exportar os arquivos.
+export * from './cadastrar-tarefa.component';
+
+- informa ao responsavel desse modulo que fiemos a criacao
+arquivo: tarefas.module
+import { CadastrarTarefaComponent } from './cadastrar'
+
+declarations: [
+    ListarTarefaComponent,
+    CadastrarTarefaComponent //criado automatico
+  ],
+
+- no tarefas.routing :
+
+import { CadastrarTarefaComponent } from "./cadastrar";
+
+
+,
+ {
+        path:'tarefas/cadastrar',
+        component:CadastrarTarefaComponent
+  }
+
+- em listar tarefa.component.html coloca no campo onde tem oo codigo do NOVO pra ir pra routa,usando o 
+-  [routerLink]="['/tarefas/cadastrar']"
+ <span class="glyphicon glyphicon-plus" [routerLink]="['/tarefas/cadastrar']" aria-hidden="true"></span> Novo
+
+-agora ao clicar no botao NOVO ele direciona para listar/cadastrar
+-ir em cadastrar-tarefa.component.html e substituir o .html com codigo novo  
+====================================================
+<h1>Cadastrar tarefa</h1>
+
+<div class="well">
+  <form #formTarefa="ngForm">
+    <div class="form-group">
+      <label for="nome">Tarefa:</label>
+      <input type="text" class="form-control" id="nome" name="nome" minlength="5" required> 
+      <div class="alert alert-danger">
+        <div>
+          Digite a tarefa.
+        </div>
+        <div>
+          A tarefa deve conter ao menos 5 caracteres.
+        </div>
+      </div>
+    </div>
+    <div class="form-group text-center">
+      <input type="submit" class="btn btn-success">
+      <a class="btn btn-default">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Voltar
+      </a>
+    </div>
+  </form>
+</div>
+==============================================
+-pacote especifico apra formularios,usando import:
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { TarefaService,Tarefa } from '../shared';
+import { Router } from '@angular/router';
+ - dentro de export class CadastrarTarefaComponent
+@ViewChild('formTarefa',{static:true})formTarefa: NgForm
+ tarefa: Tarefa;
+constructor(private tarefaService: TarefaService,private router:Router) { }
+
+- criar tarefa a partir do model. instanciar a tarefa com new
+this
+ cadastrar():void{
+    if(this.formTarefa.form.valid){
+      this.tarefaService.cadastrar(this.tarefa);
+      // so troca o conteudo da apliacao com navigate
+      this.router.navigate(["/tarefas"]);
+    }
+  }
+
+
+-em cadastra tarefa component
+-usa two way binding
+-dentro do html cadastrar component
+no input coloca: 
+ [(ngModel)]="tarefa.nome" #nome="ngModel"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
