@@ -1,5 +1,5 @@
 /**
- * Criando classe Tarefa
+ * Criando classe Tarefa e atributos
  */
 export class Tarefa{
 constructor( public id?: number,
